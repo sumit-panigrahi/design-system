@@ -5,57 +5,58 @@
  * It contains typing information for all components that exist in this project.
  */
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
+import { FontSizes, FontWeight, TextAlignmentOptions, TextTransformOptions, TypographyVariants } from "./models/sds-typography";
+export { FontSizes, FontWeight, TextAlignmentOptions, TextTransformOptions, TypographyVariants } from "./models/sds-typography";
 export namespace Components {
-    interface MyComponent {
-        /**
-          * The first name
-         */
-        "first": string;
-        /**
-          * The last name
-         */
-        "last": string;
-        /**
-          * The middle name
-         */
-        "middle": string;
+    interface SdsButton {
+    }
+    interface SdsTypography {
+        "align"?: TextAlignmentOptions;
+        "case"?: TextTransformOptions;
+        "size"?: FontSizes;
+        "variant": TypographyVariants;
+        "weight"?: FontWeight;
     }
 }
 declare global {
-    interface HTMLMyComponentElement extends Components.MyComponent, HTMLStencilElement {
+    interface HTMLSdsButtonElement extends Components.SdsButton, HTMLStencilElement {
     }
-    var HTMLMyComponentElement: {
-        prototype: HTMLMyComponentElement;
-        new (): HTMLMyComponentElement;
+    var HTMLSdsButtonElement: {
+        prototype: HTMLSdsButtonElement;
+        new (): HTMLSdsButtonElement;
+    };
+    interface HTMLSdsTypographyElement extends Components.SdsTypography, HTMLStencilElement {
+    }
+    var HTMLSdsTypographyElement: {
+        prototype: HTMLSdsTypographyElement;
+        new (): HTMLSdsTypographyElement;
     };
     interface HTMLElementTagNameMap {
-        "my-component": HTMLMyComponentElement;
+        "sds-button": HTMLSdsButtonElement;
+        "sds-typography": HTMLSdsTypographyElement;
     }
 }
 declare namespace LocalJSX {
-    interface MyComponent {
-        /**
-          * The first name
-         */
-        "first"?: string;
-        /**
-          * The last name
-         */
-        "last"?: string;
-        /**
-          * The middle name
-         */
-        "middle"?: string;
+    interface SdsButton {
+    }
+    interface SdsTypography {
+        "align"?: TextAlignmentOptions;
+        "case"?: TextTransformOptions;
+        "size"?: FontSizes;
+        "variant"?: TypographyVariants;
+        "weight"?: FontWeight;
     }
     interface IntrinsicElements {
-        "my-component": MyComponent;
+        "sds-button": SdsButton;
+        "sds-typography": SdsTypography;
     }
 }
 export { LocalJSX as JSX };
 declare module "@stencil/core" {
     export namespace JSX {
         interface IntrinsicElements {
-            "my-component": LocalJSX.MyComponent & JSXBase.HTMLAttributes<HTMLMyComponentElement>;
+            "sds-button": LocalJSX.SdsButton & JSXBase.HTMLAttributes<HTMLSdsButtonElement>;
+            "sds-typography": LocalJSX.SdsTypography & JSXBase.HTMLAttributes<HTMLSdsTypographyElement>;
         }
     }
 }
